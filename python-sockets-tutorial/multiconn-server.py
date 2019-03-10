@@ -5,6 +5,8 @@ import socket
 import selectors
 import types
 
+from goban.goban import Goban
+
 sel = selectors.DefaultSelector()
 
 
@@ -18,6 +20,9 @@ def accept_wrapper(sock):
 
 
 def service_connection(key, mask):
+
+    Goban().show()
+    print("why Goban not showing?")
     sock = key.fileobj
     data = key.data
     if mask & selectors.EVENT_READ:
